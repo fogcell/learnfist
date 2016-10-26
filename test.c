@@ -1,4 +1,4 @@
-#include "hello.h"
+#include "test.h"
 int main(void)
 {
 	printf("Hello World\n");
