@@ -2,6 +2,7 @@ set nocompatible              " 这是必需的
     filetype off                  " 这是必需的 
     colorscheme molokai     
     let g:molokai_original = 1
+	let mapleader=','
     " 你在此设置运行时路径 
     set rtp+=~/.vim/bundle/Vundle.vim  
      
@@ -12,6 +13,8 @@ set nocompatible              " 这是必需的
         Plugin 'gmarik/Vundle.vim' 
     	Bundle 'bling/vim-airline'
     	Bundle 'Valloric/YouCompleteMe'
+		Bundle 'scrooloose/syntastic'
+		Bundle 'Valloric/ListToggle'
 		"Bundle 'vim-airline/vim-airline-themes'
 		Bundle  'Lokaltog/vim-powerline'
 		let g:Powerline_symbols='unicode'
@@ -20,6 +23,8 @@ set nocompatible              " 这是必需的
 		nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 		nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 		nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+		let g:ycm_error_symbol = '>>'  
+		let g:ycm_warning_symbol = '>*'
 		let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 		" NerdTree use <F2>
 		Bundle 'scrooloose/nerdtree'
@@ -28,6 +33,14 @@ set nocompatible              " 这是必需的
 		let NERDTreeChDirMode=1
 		map <F2> :NERDTreeToggle<CR>
 		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")&& b:NERDTreeType == "primary") | q | endif
+		",c call gcc 
+		"<F7> 编译和运行C  
+		map <F7> :call CompileRunGcc()<CR>
+		func! CompileRunGcc()  
+		exec "w<"  
+		exec "!gcc % -o %<"  
+		exec "! ./%<"  
+		endfunc 
 		"--ctags setting--
 		"
 		"" 按下F5重新生成tag文件，并更新taglist
