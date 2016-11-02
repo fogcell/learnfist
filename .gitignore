@@ -2,6 +2,7 @@ tags
 sites
 *.d
 hello
+popen1
 # Object files
 *.o
 *.ko
