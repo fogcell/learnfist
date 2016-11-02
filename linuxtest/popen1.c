@@ -19,5 +19,5 @@ int main()
 		pclose(read_fp);
 		exit(EXIT_SUCCESS);
 	}
-	exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }
