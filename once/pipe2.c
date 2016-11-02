@@ -18,13 +18,13 @@ int main()
 		if (fork_result == -1){
 			fprintf(stderr, "Fork failure");
 			exit(EXIT_FAILURE);
-		}
-		if (fork_result == 0){
+		}//success
+		if (fork_result == 0){//in chile process 
 			data_processed = read(file_pipes[0], buffer, BUFSIZ);
 			printf("Read %d bytes: %s\n", data_processed, buffer);
 			exit(EXIT_SUCCESS);
 		}
-		else {
+		else {//in parent process
 			data_processed = write(file_pipes[1], somg_data,
 											strlen(somg_data));
 			printf("Wrote %d bytes\n", data_processed);
