@@ -16,3 +16,5 @@ int cmd_shell(char *shellcmd, char *outbuffer, int size) {
     }
     return -1;
 }  
+//ifconfig eth0 | grep "RX bytes" | awk '{print $2}' | sed 's/bytes://g'
+//ifconfig eth0 | grep "RX bytes" | awk '{print $2}' | awk -F: '{print $2}'
